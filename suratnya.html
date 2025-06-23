@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surat Ulang Tahun</title>
+  <style>
+    @font-face {
+      font-family: 'StickyPaper';
+      src: url('Sticky\\ Paper.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Rostenfly';
+      src: url('Rostenfly.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Gurame Fish';
+      src: url(Gurame\ Fish.otf) format('opentype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #d3eeeb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Rostenfly', sans-serif;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    .envelope-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #99ccff;
+      border-radius: 5px;
+      z-index: 2;
+      transform-origin: bottom;
+      transition: transform 0.5s;
+      /* Fold lines */
+      background-image: 
+        linear-gradient(to bottom right, transparent 49%, rgba(0,0,0,0.1) 50%, transparent 51%),
+        linear-gradient(to bottom left, transparent 49%, rgba(0,0,0,0.1) 50%, transparent 51%);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .envelope-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #99ccff;
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      width: 100%;
+      height: 130%;
+      background: #76a6ee;
+      border-radius: 5px;
+      z-index: 3;
+      transform-origin: top;
+      transition: transform 0.5s;
+      clip-path: polygon(0 0, 100% 0, 50% 50%);
+      /* Fold line for flap */
+      background-image: linear-gradient(to bottom, transparent 49%, rgba(0,0,0,0.1) 50%, transparent 51%);
+    }
+
+    .letter {
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 400px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.7s ease 0.3s, opacity 0.7s ease 0.3s;
+      z-index: 1000;
+      font-family: 'Gurame Fish';
+    }
+
+    .envelope-container.open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-container.open .envelope-front {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-container.open .letter {
+      transform: translateY(-160px);
+      opacity: 1;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 10px;
+    }
+
+    @font-face {
+      font-family: 'StickyPaper';
+      src: url('Sticky\\ Paper.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Rostenfly';
+      src: url('Rostenfly.otf') format('opentype');
+    }
+
+    body.opened {
+     background-color: #bbf7bb; /* pastel hijau muda */
+     transition: background 1s ease-in-out;
+    }
+
+    .dino {
+    position: fixed;
+    top: -60px;
+    width: 50px;
+    height: auto;
+    z-index: 10;
+    animation: fall-spin linear 2.5s forwards;
+    user-select: none;
+    transition: transform 0.2s;
+    }
+
+    @keyframes fall-spin {
+      0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      }
+      100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+      }
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+<body>
+  <div class="envelope-container" onclick="openEnvelope()">
+    <div class="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+      <div class="envelope-back"></div>
+    </div>
+    <div class="letter">
+      <p>Makan nasgor pake acar, <br> Apa kabar calon pacar? 🦕</p>
+      <p>Selamat ulang tahun yaa, Razz! Semoga hari ulang tahun kamu selalu menjadi hari yg paling membahagiakan🎂</p>
+      <p>Dari awal aku emg niat bikin ini emang buat kamu, maaf yaa kalau semisal web ini masih kurang bagus😟soalnya aku masih pemula. Kalau kamu bingung aku tau ultah kamu darimana, aku tau dari biodata yg dikirim dulu waktu MPLS😎</p>
+      <p>Ihacoy, Farraz. Aku suka kamu dari sebelum PSC mulai, entah gimana aku mulai notice kamu (ada) di kelas dan it's make me feel ur so attractive😵 </p>
+      <p>Aku Jerman kamu Perancis, <br> Aku perhatikan kamu tiap hari makin maniss😋cihuyyy😜</p>
+      <p>Eh aku udah curiga tau dari sebelum aku ngasih gift ini, kamu udah tau aku yg suka kamu wkwk, yhh mungkin itu cuma perasaan aku aja kali yaa? Setelah tau kamu masih gamon sama crush SMP kamu, aku kayak 'huhh ini beneran nt dluan?'. Tapi yg lain ngeyakinin aku teruss. Jadii ini hasilnya, aku beraniin diri buat confess ke kamuu hhe</p>
+      <p>Aku mau minta tolong yaa, setelah kamu nerima gift ini, kita jangan jadi canggung😓</p>
+      <p>Ah iya, kamu jangan suka begadang ya razz, mending suka sama aku aja:P <br> Btw, maaf juga yah kalau susunan kata atau kalimatnya ga jelas, soalnya yg jelas cuma rasa suka aku ke kamu🌹</p>
+      <p>Ini ada satu hadiah lagi dari aku (kalau kamu mau) TAPI HARUS MAU SII😾, kalau emang ga mau.. yaudah gapapa😞. Pencet stiker dino yg ada di sebelah kanan amplop ini yapp👉🏻</p>
+      <p style="text-align:right;">- Zalika Amala</p>
+    </div>
+    <img id="dino-button" src="dino kuning.jfif" alt="dino-button"
+    style="
+      position: absolute;
+      right: -150px;
+      top: 40px;
+      width: 70px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      z-index: 2;"
+    onclick="confirmGift(event)"/>
+  </div>
+
+<audio id="suratMusik" src="i wanna be yours.mp3" loop></audio>
+
+
+<script>
+  const envelope = document.querySelector('.envelope-container');
+  const music = document.getElementById('suratMusik');
+
+  function openEnvelope() {
+    envelope.classList.toggle('open');
+    document.body.classList.toggle('opened');
+
+    if (envelope.classList.contains('open')) {
+      // Musik play
+      music.currentTime = 0;
+      const playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          alert("Klik lagi buat nyalain musik 🎶");
+        });
+      }
+
+      // Dino berjatuhan!
+     for (let i = 0; i < 40; i++) {
+  setTimeout(spawnDino, i * 100); // jeda lebih rapet biar lebih rame
+      }
+
+    } else {
+      // Musik stop
+      music.pause();
+      music.currentTime = 0;
+    }
+  }
+
+  function spawnDino() {
+  const dino = document.createElement("img");
+  dino.src = "dinoone.png"; // pastikan nama file benar
+  dino.classList.add("dino");
+
+  // Biar jatuhnya ga nutup surat
+  const randomLeft = Math.random() * (window.innerWidth-60);
+  const randomSize = Math.floor(Math.random() * 40) + 30; // antara 30–70 px
+
+  dino.style.left = `${randomLeft}px`;
+  dino.style.width = `${randomSize}px`;
+  document.body.appendChild(dino);
+
+  setTimeout(() => dino.remove(),4000);
+}
+
+  let noCount = 0;
+  const messages = [
+    "Ga",
+    "Beneran gamau?",
+    "Ayo mau dongg",
+    "Please mauu :(",
+    "Ada yg pecah tapi bukan kaca💔",
+    "Ok. Ckp tw. Gwej i'm fine."
+  ];
+
+  function confirmGift(event) {
+    event.stopPropagation();
+
+    noCount = 0;
+
+    Swal.fire({
+      title: 'Kamu mau ga couple an gelang sama aku? :P',
+      html: `
+        <button id="yesBtn" 
+        style="
+        font-size:16px;
+        font-family:Rostenfly;
+        padding:8px 16px;
+        margin-right:10px;
+        border:none;
+        border-radius:6px;
+        background:#86efac;
+        color:#000;
+        cursor:pointer;
+        ">Iya</button>
+        
+        <button id="noBtn" 
+        style="
+        font-size:16px;
+        font-family: Rostenfly;
+        padding:8px 16px;
+        border:none;
+        border-radius:6px;
+        background:#fca5a5;
+        color:#000;
+        cursor:pointer;
+        ">Ga</button>
+      `,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+
+        yesBtn.addEventListener('click', () => {
+  Swal.close(); // Nutup popup sebelumnya
+  alert('YAYYY😻 Aku seneng banget! Sekarang langsung ke WA yaa 🎁');
+  window.location.href = 'https://wa.me/6282117377586?text=Jal,%20aku%20mau%20couple%20gelangnya';
+});
+
+        noBtn.addEventListener('click', () => {
+          noCount++;
+          const msg = messages[Math.min(noCount, messages.length - 1)];
+          noBtn.innerText = msg;
+
+          const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+          yesBtn.style.fontSize = (currentSize * 1.2) + 'px';
+
+          if (noCount >= messages.length - 1) {
+            noBtn.disabled = true;
+            noBtn.style.opacity = 0.5;
+          }
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>

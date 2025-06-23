@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'StickyPaper';
+  src: url('Sticky\ Paper.otf') format('opentype');
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #9cd0ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+#cake {
+  display: block;
+  position: relative;
+  margin: -10em auto 0 auto;
+}
+
+/*Candle*/
+
+.candles {
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 270px;
+  left: 50%;
+  margin-left: -2.4px;
+  margin-top: -8.33333333px;
+  width: 5px;
+  height: 35px;
+  transform: translateY(-300px);
+  backface-visibility: hidden;
+  animation: in 500ms 6s ease-out forwards;
+}
+.candles:after,
+.candles:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+.candles:after {
+  top: 25%;
+  left: 0;
+}
+.candles:before {
+  top: 45%;
+  left: 0;
+}
+
+.flame {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 25px;
+    background: radial-gradient(circle at 50% 40%, #fff7a1 0%, #ffcc33 40%, #ff6600 80%);
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    animation: flicker 1.2s infinite ease-in-out;
+    box-shadow:
+      0 0 15px 5px rgba(255, 204, 51, 0.6),
+      0 0 25px 10px rgba(255, 102, 0, 0.5);
+  }
+  .flame.extinguished {
+    animation: single-animation; 
+    opacity: 0;
+    box-shadow: none;
+  }
+  @keyframes flicker {
+    0%, 100% { transform: translateX(-50%) scale(1) translateY(0); }
+    50% { transform: translateX(calc(-50% + 2px)) scale(1.1) translateY(-2px); }
+  }
+
+@keyframes fuego {
+  0%, 100% {
+    background: rgba(254, 248, 97, 0.5);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+
+@keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.text h1 a {
+  color: #000000;
+  font-family: 'StickyPaper';
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-size: 35px;
+}
+  .text h1 a:hover{
+    color: rgb(69, 201, 102);
+    font-size: 35px;
+    transition: all 0.3 ease;
+    letter-spacing: 0.08em;
+  }
+  .text p {
+    color: #000000;
+    font-size: 25px;
+    font-family: 'StickyPaper';
+    text-align: center;
+  }
+
+@font-face {
+  font-family: 'Rostenfly';
+  src: url('Rostenfly.otf') format(opentype);
+}
+
+  .instruction {
+    text-align: center;
+    font-family: 'Rostenfly';
+    font-size: 20px;
+    color: #000000;
+    letter-spacing: 0.1em;
+  }
+
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  opacity: 0.8;
+  animation: fall linear forwards;
+  border-radius: 0px;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+  audio {
+    display: none;
+  }
